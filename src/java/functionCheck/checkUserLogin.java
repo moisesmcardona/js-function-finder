@@ -25,8 +25,8 @@ import javax.mail.internet.*;
  * @author cardona_76937
  */
 public class checkUserLogin {
-    String FileDirectory = "C:\\files\\";
-    String DomainName = "localhost";
+    String FileDirectory = config.FileDirectory;
+    String DomainName = config.DomainName;
     public int checkLogin(String username, String password) {
         int uservalid = 0;
         try {
@@ -81,8 +81,8 @@ public class checkUserLogin {
                 out4.close();
                 //sends email
                 String to = email;
-                String from = "user@domain.com";
-                String host = "smtp-relay.gmail.com";
+                String from = config.mailFrom;
+                String host = config.smtpRelay;
                 Properties properties = System.getProperties();
                 properties.setProperty("mail.smtp.host", host);
                 Session session = Session.getDefaultInstance(properties);

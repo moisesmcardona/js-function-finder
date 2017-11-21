@@ -10,6 +10,7 @@
     String name = request.getParameter("name");
     session.setAttribute("name", name);
 %>
+<jsp:useBean id="Config" class="functionCheck.config" scope="session" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,8 +21,7 @@
         <h1>Usage History for: <%=session.getAttribute("name")%></h1>
         Total Usage:
         <%
-            String FileDirectory = "C:\\files\\";
-            BufferedReader input = new BufferedReader(new FileReader(FileDirectory + name + "_history2"));
+            BufferedReader input = new BufferedReader(new FileReader(Config.FileDirectory + name + "_history2"));
             String line = "";
             while ((line = input.readLine()) != null) {
                 out.println(line);
@@ -33,7 +33,7 @@
         </br></br>
         </br>
         <%
-            BufferedReader input2 = new BufferedReader(new FileReader(FileDirectory + name + "_history1"));
+            BufferedReader input2 = new BufferedReader(new FileReader(Config.FileDirectory + name + "_history1"));
             String line2 = "";
             while ((line2 = input2.readLine()) != null) {
                 if (line2.equals("Select a date below to check the code and results:") == false)

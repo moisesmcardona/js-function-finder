@@ -14,6 +14,7 @@
     session.setAttribute("date", date);
 %>
 <!DOCTYPE html>
+<jsp:useBean id="Config" class="functionCheck.config" scope="session" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,8 +23,7 @@
     <body>
         <h1>Results!</h1>
         <%
-            String FileDirectory = "C:\\files\\";
-            BufferedReader input = new BufferedReader(new FileReader(FileDirectory + name + "_results_" + date));
+            BufferedReader input = new BufferedReader(new FileReader(Config.FileDirectory + name + "_results_" + date));
             String line = "";
             while ((line = input.readLine()) != null) {
                 out.println(line);
@@ -32,7 +32,7 @@
             out.flush();
             input.close();
             out.print("<h2>Original Code</h2>");
-            BufferedReader input2 = new BufferedReader(new FileReader(FileDirectory + name + "_code_" + date));
+            BufferedReader input2 = new BufferedReader(new FileReader(Config.FileDirectory + name + "_code_" + date));
             String line2 = "";
             int linenumber = 1;
             while ((line2 = input2.readLine()) != null) {

@@ -24,7 +24,6 @@
         <% 
             String url = "";
             String date = "";
-            ;
             date = Analyze.codeAnalyze(name, code); 
             url="results.jsp?name="+ name + "&date=" + date; //relative url for display jsp page
              response.setStatus(response.SC_MOVED_TEMPORARILY);
